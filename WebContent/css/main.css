@@ -1,0 +1,481 @@
+.submitButton{
+	background:url(../images/bg08092.gif)  repeat-x; width:56px; height:20px; line-height:18px;
+	padding:0;
+	margin:0;
+	padding: 1px 12px; line-height:18px;
+	border:1px solid #87A3C1;
+	color:#000099;
+}
+
+.importButton{
+	background:url(../images/xls.gif)  repeat-x; width:56px; height:20px; line-height:18px;
+	padding:0;
+	margin:0;
+	padding: 1px 12px; line-height:18px;
+	border:1px solid #87A3C1;
+	color:#000099;
+}
+
+.buttonUl-popup-modal{ 
+	overflow:hidden;
+}
+
+.buttonUl{ 
+	overflow:hidden;
+}
+.buttonUl ul{ 
+	repeat-x 0 -72px; 
+	height:18px; 
+}
+
+.buttonUl li{ 
+	float:left; 
+	width:auto !important; 
+	width:1%; 
+	white-space:nowrap; 
+	padding:0 3px; 
+	no-repeat bottom left;
+}
+
+.buttonUl li a{ 
+	display:block; 
+	text-decoration:none; 
+	padding-left:2px; 
+	cursor:pointer;
+}
+.buttonUl li a span { 
+	display:block;
+	height:24px; 
+	line-height:18px; 
+	color:white; 
+	padding-right:5px;
+}
+
+
+.eventMessage {
+color: #000099;
+}
+ 
+.errorMessage {
+color: #ff0000;
+}
+
+.screenlet-title {
+margin: 1px 2px 2px 3px;
+text-indent: 5px;
+font-size:12px;
+}
+
+
+.screenlet {
+position: relative;
+overflow: hidden;
+text-align: left;
+vertical-align: middle;
+cursor: default;;
+filter: none
+}
+
+.screenlet h3 p {
+display: inline; 
+font-weight: normal;
+margin: 0px 0px 0px 155px;
+text-align: left;
+font-size:12px;
+}
+
+.screenlet-header {
+clear: both;
+display: block;
+margin: 0px;
+font-size:12px;
+}
+
+
+.item-box * {
+vertical-align: middle
+}
+
+.item-box {
+display: block;
+position: relative;
+overflow: hidden;
+width: 100%;
+height: 100%;
+padding: 0px 4px 0px 4px;
+text-overflow: ellipsis;
+vertical-align: top;
+}
+
+.bk{ border:1px solid #95cbdd;}
+.widget {
+height: 22px !important;;
+line-height: 22px;
+background: url(/images/widget.gif) 100% 0px no-repeat;;
+
+}
+
+.widget .item-box {
+padding: 0px;
+text-indent: 5px;
+background: url(/images/widget.gif) 0px -50px no-repeat;
+}
+
+.widget.screenlet-footer {
+height: 10px !important;;
+line-height: 10px;
+background-position: 100% -28px;
+}
+
+.widget.screenlet-footer .item-box {
+background-position: 0px -90px;;
+}
+
+.widget.footer {
+height: 10px !important;;
+background-position: 100% -40px;;
+line-height: 10px;
+}
+
+.widget.footer .item-box {
+background-position: 0px -90px;;
+}
+
+/* ======================== */
+/* =====ShangHai Table Styles ===== */
+/* ======================== */
+.header-sh{
+	background-color: #E2F4FE;
+}
+
+.basic-table-sh {
+width: 100%; 
+border:1px solid #DBDCE3; margin:0 0px; font-size:12px;
+}
+
+.basic-table-sh tr td {
+/* Style for all cells */
+padding: 0 0 0 5px;
+text-align: left;
+line-height:21px; height:21px;
+}
+
+.basic-table-sh tr .label,
+.basic-table-sh tr .group-label {
+/* field labels for forms */
+font-size:12px;
+text-align: right;
+
+width: 1%;
+padding-left:8px;
+}
+
+.basic-table-sh tr .group-label {
+/* "header" for field label groups */
+font-size: 12px;
+}
+
+.basic-table-sh th,
+.basic-table-sh tr th,
+.basic-table-sh .header-row {
+/*background-image: url(/images/tabs/tab_header_bg.gif); */
+background: #599de9;
+text-align: center;
+padding: 0; 
+line-height:21px; height:21px;
+
+}
+
+.basic-table-sh .header-row td {
+border-bottom: 0.1em solid #000000;
+}
+
+.header-row-sh td a {
+color: #000000;
+}
+
+.basic-table-sh .viewManyTR1,
+.basic-table-sh .alternate-row {
+/* Alternating row style */
+/* .viewManyTR1 deprecated - use .alternate-row */
+background-color: #FFFFCC;
+}
+
+.basic-table-sh tr .button-col {
+/* button column style - for the small
+collection of buttons used in lists */
+vertical-align: top;
+}
+
+.basic-table-sh tr .button-col a {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+float: left;
+margin: 0 0.1em 0 0.1em;
+padding: 0.1em 0 0.1em 0.4em;
+
+}
+
+.basic-table-sh tr .smallSubmit,
+.basic-table-sh tr .smallSubmit:visited {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+
+
+}
+
+.basic-table-sh tr .button-col a:hover,
+.basic-table-sh tr .button-col a:active,
+.basic-table-sh tr .smallSubmit:hover,
+.basic-table-sh tr .smallSubmit:active {
+color: #ff0000;
+text-decoration: none;
+}
+.basic-table-sh tr a:hover{}
+.basic-table-sh tbody td {
+border-bottom:#F0F0F0 1px solid;
+}
+
+.basic-table-sh tfoot td
+{
+text-align:center;
+border-bottom:#b5d7ff 1px solid;
+line-height:12px;
+height:12px;
+background:#e6f1fd;
+}
+
+.bgonmouseover-sh{ background-color:#CCCCCC}
+
+
+
+
+.basic-form{
+	border-top: #95CBDD solid 1px;
+	border-left: #95CBDD solid 1px;
+	width:100%;
+}
+.basic-form td {
+border-right:#95CBDD solid 1px;
+border-bottom:#95CBDD solid 1px;
+}
+
+
+.basic-form table .header-row:hover {
+background-color: #C6E2EC;
+color: #000000;
+}
+
+
+.basic-form  tr td {
+/* Style for all cells */
+padding: 0 0 0 5px;
+line-height:21px; height:21px;
+
+}
+
+.basic-form table td .label,
+.basic-form table td .group-label {
+/* field labels for forms */
+background-color:#DBDCE3;
+text-align: right;
+width: 1%;
+}
+
+.basic-form table tr .group-label {
+/*"header" for field label groups*/ 
+padding: 2em 1.5em 0 0;
+}
+
+.basic-form table tr th,
+.basic-form table .header-row {
+font-weight: 500;
+text-align: left;
+}
+
+.basic-form table .header-row:hover,
+.basic-form table tr th:hover{
+background-color: #C6E2EC;
+color: #000000;
+}
+
+.basic-form table .header-row td {
+border-bottom: 0.1em solid #999999;
+}
+
+.basic-form table .viewManyTR1,
+.basic-form table .alternate-row {
+/* Alternating row style */
+/* .viewManyTR1 deprecated - use .alternate-row */
+background-color: #eeeeee;
+}
+
+.basic-form table tr td .smallSubmit,
+.basic-form table tr td .smallSubmit:visited {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+font-size:12px;
+font-weight: 500;
+margin: 0px;
+padding: 0.1em 0.2em 0.1em 0.2em;
+}
+
+.basic-form table tr td .smallSubmit:hover,
+.basic-form table tr td .smallSubmit:active {
+color: #ff0000;
+text-decoration: none;
+}
+
+.basic-form table tr td .disabled {
+background-color: #cccccc;
+color: #333366;
+text-decoration: none;
+}
+.basic-form table tr a:hover{ background:#FDFBE7; display:block;}
+
+/*===== Form decorator - Form Widget ===== */
+
+.basic-form .form-widget,
+.basic-form .form-widget-table {
+width:100%;
+}
+
+
+
+.label {
+/* Used for <input> element labels */
+font-size: 12px;
+height:25px; /* Same as <input> height */
+padding-left: 8px;
+padding-right:8px;
+text-align: right;
+white-space: nowrap;
+background-color:#E6F4F7;
+width: 1%;
+}
+.label02 {
+/* Used for <input> element labels */
+font-size: 12px;
+padding-left: 8px;
+padding-right:8px;
+text-align: right;
+white-space: nowrap;
+background-color:#EEF1F0;
+width: 1%;
+}
+
+
+.label3 {
+/* Used for <input> element labels */
+font-size: 12px;
+height:25px; /* Same as <input> height */
+padding-left: 8px;
+padding-right:8px;
+text-align: center;
+white-space: nowrap;
+background-color:#E6F4F7;
+}
+group-label {
+/* field labels for forms */
+background-color:#DBDCE3;
+text-align: right;
+width: 1%;
+}
+
+.basic-form table tr .group-label {
+/*"header" for field label groups*/ 
+padding: 2em 1.5em 0 0;
+}
+
+.basic-form table tr th,
+.basic-form table .header-row {
+font-weight: 500;
+text-align: left;
+}
+
+.basic-form table .header-row:hover,
+.basic-form table tr th:hover{
+background-color: #C6E2EC;
+color: #000000;
+}
+
+.basic-form table .header-row td {
+border-bottom: 0.1em solid #999999;
+}
+
+.basic-form table .viewManyTR1,
+.basic-form table .alternate-row {
+/* Alternating row style */
+/* .viewManyTR1 deprecated - use .alternate-row */
+background-color: #eeeeee;
+}
+
+.basic-form table tr td .smallSubmit,
+.basic-form table tr td .smallSubmit:visited {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+font-size:12px;
+font-weight: 500;
+margin: 0px;
+padding: 0.1em 0.2em 0.1em 0.2em;
+}
+
+.basic-form table tr td .smallSubmit:hover,
+.basic-form table tr td .smallSubmit:active {
+color: #ff0000;
+text-decoration: none;
+}
+
+.basic-form table tr td .disabled {
+background-color: #cccccc;
+color: #333366;
+text-decoration: none;
+}
+.basic-form table tr a:hover{ background:#FDFBE7; display:block;}
+
+/*===== Form decorator - Form Widget ===== */
+
+.basic-form .form-widget,
+.basic-form .form-widget-table {
+width:100%;
+}
+
+
+
+.label {
+/* Used for <input> element labels */
+font-size: 12px;
+height:25px; /* Same as <input> height */
+padding-left: 8px;
+padding-right:8px;
+text-align: right;
+white-space: nowrap;
+background-color:#E6F4F7;
+width: 1%;
+}
+.label02 {
+/* Used for <input> element labels */
+font-size: 12px;
+padding-left: 8px;
+padding-right:8px;
+text-align: right;
+white-space: nowrap;
+background-color:#EEF1F0;
+width: 1%;
+}
+
+
+.label3 {
+/* Used for <input> element labels */
+font-size: 12px;
+height:25px; /* Same as <input> height */
+padding-left: 8px;
+padding-right:8px;
+text-align: center;
+white-space: nowrap;
+background-color:#E6F4F7;
+}

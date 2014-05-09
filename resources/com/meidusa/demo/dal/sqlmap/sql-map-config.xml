@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/post_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/user_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/userpermission_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/enterpriseinfo_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/business_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/candidates_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/candidatetrains_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/enterprisecredit_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/enterpriseproducts_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/enumeration_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/examenrolls_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/examination_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/expert_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/expertproject_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/finance_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/integrityinfo_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/litigation_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/product_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/project_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/qualification_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/training_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/notification_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/correspondent_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/excellentselection_SqlMap.xml" />
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/selfenterprise_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/selfcompleteproject_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/venterpriseallinfo_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/selftechperson_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/selfcostengineer_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/installemployee_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/projectstand_SqlMap.xml"/>
+	<sqlMap resource="com/meidusa/demo/dal/sqlmap/highqualityproject_SqlMap.xml"/>
+</sqlMapConfig>

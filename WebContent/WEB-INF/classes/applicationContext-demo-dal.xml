@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC 
+       "-//SPRING//DTD BEAN//EN"
+       "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="postDAO" class="com.meidusa.demo.dal.PostDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="userDAO" class="com.meidusa.demo.dal.UserDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="userPermissionDAO" class="com.meidusa.demo.dal.UserPermissionDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="enumerationDAO" class="com.meidusa.demo.dal.EnumerationDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="enterpriseDAO" class="com.meidusa.demo.dal.EnterpriseInfoDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="businessDAO" class="com.meidusa.demo.dal.BusinessDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="financeDAO" class="com.meidusa.demo.dal.FinanceDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="litigationDAO" class="com.meidusa.demo.dal.LitigationDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="qualificationDAO" class="com.meidusa.demo.dal.QualificationDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="integrityinfoDAO" class="com.meidusa.demo.dal.IntegrityInfoDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	
+	<bean id="notificationDAO" class="com.meidusa.demo.dal.NotificationDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="expertDAO" class="com.meidusa.demo.dal.ExpertDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="expertprojectDAO" class="com.meidusa.demo.dal.ExpertProjectDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="correspondentDAO" class="com.meidusa.demo.dal.CorrespondentDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="excellentselectDAO" class="com.meidusa.demo.dal.ExcellentSelectionDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="trainDAO" class="com.meidusa.demo.dal.TrainingDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="examDAO" class="com.meidusa.demo.dal.ExaminationDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="candidateDAO" class="com.meidusa.demo.dal.CandidatesDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="candidatetrainsDAO" class="com.meidusa.demo.dal.CandidateTrainsDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="examenrollsDAO" class="com.meidusa.demo.dal.ExamEnrollsDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="productDAO" class="com.meidusa.demo.dal.ProductDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="projectDAO" class="com.meidusa.demo.dal.ProjectDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="selfEnterpriseDAO" class="com.meidusa.demo.dal.SelfEnterpriseDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="selfCompleteProjectDAO" class="com.meidusa.demo.dal.SelfCompleteProjectDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="selfCostEngineerDAO" class="com.meidusa.demo.dal.SelfCostEngineerDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="selfTechPersonDAO" class="com.meidusa.demo.dal.SelfTechPersonDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="projectStandDAO" class="com.meidusa.demo.dal.ProjectStandDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="installEmployeeDAO" class="com.meidusa.demo.dal.InstallEmployeeDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	<bean id="highQualityProjectDAO" class="com.meidusa.demo.dal.HighQualityProjectDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+	
+	<bean id="vEnterpriseAllInfoDAO" class="com.meidusa.demo.dal.VEnterpriseAllInfoDAOImpl" singleton="true" parent="demoAbstractDAO"/>
+</beans>

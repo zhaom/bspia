@@ -1,0 +1,596 @@
+<!DOCTYPE struts PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+       "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.custom.i18n.resources" value="bspia" />
+	<constant name="struts.multipart.maxSize" value="52428800"/>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.serve.static.browserCache" value="false" />
+
+	<package name="default" extends="struts-default">
+		<interceptors>
+		<!-- 
+			<interceptor name="cookieInterceptor"	class="com.meidusa.toolkit.web.cookie.ClientCookieInterceptor" />
+		 -->	
+			<interceptor name="pagingInterceptor" class="com.meidusa.toolkit.web.page.PagingIntercept" />
+			<interceptor name="dispatcherInterceptor" class="com.meidusa.toolkit.web.common.intercepters.DispatcherInterceptor"/>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain"/>
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="pagingInterceptor" />
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg,image/x-png,image/bmp,image/x-ms-bmp</param>
+					<param name="maximumSize">52428800</param>
+				</interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="dispatcherInterceptor"/>
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,add,edit,show,list</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,add,edit,show,list</param>
+				</interceptor-ref>
+			</interceptor-stack>
+            <interceptor-stack name="paramsPrepareParamsStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="pagingInterceptor" />
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="dispatcherInterceptor"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,add,edit,show,list</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,add,edit,show,list</param>
+                </interceptor-ref>
+            </interceptor-stack>
+		<!-- 
+			<interceptor-stack name="cookieDefaultStack">
+				<interceptor-ref name="cookieInterceptor" />
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor-stack name="cookieParamsPrepareParamsStack">
+				<interceptor-ref name="cookieInterceptor" />
+				<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			</interceptor-stack>
+		 -->
+		</interceptors>
+		<!-- 
+		<default-interceptor-ref name="cookieDefaultStack"></default-interceptor-ref>
+		 -->
+	</package>
+
+	<package name="demo" namespace="/demo" extends="default">
+		<result-types>
+			<result-type name="checkCode"
+				class="com.meidusa.toolkit.web.common.resulttype.CheckCodeResultType" />
+		</result-types>
+		<action name="s*" class="com.meidusa.toolkit.web.common.action.DispatcherCookieNotCareAction">
+			<param name="includes">signin</param>
+			<result name="success">/WEB-INF/jsp/demo/s{1}.jsp</result>
+		</action>
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<param name="excludes">signin</param>
+			<result name="success">/WEB-INF/jsp/demo/{1}.jsp</result>
+		</action>		
+		
+		<action name="checkCode" class="com.meidusa.toolkit.web.common.action.CheckCodeAction">
+			<interceptor-ref name="basicStack"/>
+			<result name="success" type="checkCode">
+				<param name="contentType">image/jpeg</param>
+				<param name="checkCode">${checkCode}</param>
+			</result>
+		</action>		
+		
+		<action name="post" class="post">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/demo/showPost.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/demo/listPost.ftl</result>  
+		    <result name="view" type="redirect">/demo/viewPost.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/demo/browse.action</result>  
+		    <result name="edit">/WEB-INF/jsp/demo/editPost.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/demo/editPost.jsp</result>  
+		    <result name="error" >/WEB-INF/jsp/error.jsp</result>  
+		</action>
+	
+		<action name="postPaging" class="postPaging"/>
+		
+		<action name="login" class="login">
+			<result name="success" type="redirect">/system/homePage.action</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="logout" class="logout">
+			<result name="success">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="system" namespace="/system" extends="default">
+
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/user/{1}.jsp</result>
+		</action>		
+		
+
+
+		<action name="user" class="user">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/user/showUser.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/user/listUser.ftl</result>  
+		    <result name="view" type="redirect">/system/viewUser.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/system/browse.action</result>
+		    <result name="edit">/WEB-INF/jsp/user/editUser.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/user/editUser.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="user2" class="user2">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/user/showUser.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/user/listUser.ftl</result>  
+		    <result name="view" type="redirect">/system/viewUser.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/system/browse.action</result>
+		    <result name="edit">/WEB-INF/jsp/user/editUser.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/user/editUser.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="userPermission" class="userPermission">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/user/showUserPermission.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/user/listUserPermission.ftl</result>  
+		    <result name="view" type="redirect">/system/viewUserPermission.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/system/browseUserPermission.action</result>
+		    <result name="edit">/WEB-INF/jsp/user/editUserPermission.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/user/editUserPermission.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>	
+
+		<action name="notification" class="notification">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/user/showNotification.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/user/listNotification.ftl</result>  
+		    <result name="view" type="redirect">/system/viewNotification.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/system/browseNotification.action</result>
+		    <result name="edit">/WEB-INF/jsp/user/editNotification.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/user/editNotification.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+		
+		<action name="enumeration" class="enumeration">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />
+		    <result name="show" type="freemarker">/WEB-INF/ftl/user/showEnumeration.ftl</result>
+		    <result name="list" type="freemarker">/WEB-INF/ftl/user/listEnumeration.ftl</result> 
+		    <result name="selectList" type="freemarker">/WEB-INF/ftl/user/selectListEnumeration.ftl</result>  
+		    <result name="selectListNULLEx" type="freemarker">/WEB-INF/ftl/user/selectListNULLExEnumeration.ftl</result>  
+		    <result name="view" type="redirect">/system/viewEnumeration.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/system/browseEnumeration.action</result>
+		    <result name="edit">/WEB-INF/jsp/user/editEnumeration.jsp</result>
+		    <result name="input">/WEB-INF/jsp/user/editEnumeration.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
+		
+		<action name="userPaging" class="userPaging"/>
+		<action name="notificationPaging" class="notificationPaging"/>
+		<action name="enumerationPaging" class="enumerationPaging"/>	
+	</package>
+	
+	<package name="enterprise" namespace="/enterprise" extends="default">
+
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/enterprise/{1}.jsp</result>
+		</action>		
+		
+		<action name="enterprisePaging" class="enterprisePaging"/>
+
+		<action name="enterprise" class="enterprise">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/enterprise/showEnterpriseInfo.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseInfo.ftl</result>
+		    <result name="listbusiness" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseBusiness.ftl</result>
+		    <result name="listfinance" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseFinance.ftl</result>
+		    <result name="listIntegrityInfo" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseIntegrityInfo.ftl</result>
+		    <result name="listlitigation" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseLitigation.ftl</result>
+		    <result name="listQualification" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseQualification.ftl</result>
+		    <result name="listProduct" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseProduct.ftl</result>
+		    <result name="listProject" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseProject.ftl</result>
+		    <result name="listExpertProject" type="freemarker">/WEB-INF/ftl/enterprise/listEnterpriseExpertProject.ftl</result>
+		    <result name="view" type="redirect">/enterprise/viewEnterpriseInfo.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/enterprise/browse.action</result>  
+		    <result name="edit">/WEB-INF/jsp/enterprise/editEnterpriseInfo.jsp</result>
+		    <result name="editQualification">/WEB-INF/jsp/enterprise/editEnterpriseQualification.jsp</result>
+		    <result name="editIntegrityinfo">/WEB-INF/jsp/enterprise/editEnterpriseIntegrityinfo.jsp</result>
+		    <result name="checkIntegrityReport">/WEB-INF/jsp/enterprise/checkEnterpriseIntegrityReport.jsp</result>
+		    <result name="input">/WEB-INF/jsp/enterprise/editEnterpriseInfo.jsp</result>
+		    <result name="queryList"  type="freemarker">/WEB-INF/ftl/enterprise/queryListEnterpriseInfo.ftl</result>
+		    <result name="statisticAll"  type="freemarker">/WEB-INF/ftl/enterprise/statisticAllListEnterpriseInfo.ftl</result>
+		    <result name="statisticSpc"  type="freemarker">/WEB-INF/ftl/enterprise/statisticSpcListEnterpriseInfo.ftl</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+	
+	
+	</package>	
+	
+	<package name="finance" namespace="/finance" extends="default">
+
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/finance/{1}.jsp</result>
+		</action>		
+		
+		<action name="businessPaging" class="businessPaging"/>
+		<action name="financePaging" class="financePaging"/>
+		<action name="litigationPaging" class="litigationPaging"/>
+		
+		<action name="business" class="business">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/finance/showBusiness.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/finance/listBusiness.ftl</result>
+		    <result name="view" type="redirect">/finance/viewBusiness.action?requestId=${requestId}&amp;enterpriseid={enterpriseid}</result>  
+		    <result name="browse" type="redirect">/finance/browseBusiness.action?requestId=${enterpriseid}</result>
+		    <result name="edit">/WEB-INF/jsp/finance/editBusiness.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/finance/editBusiness.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="finance" class="finance">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/finance/showFinance.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/finance/listFinance.ftl</result>
+		    <result name="view" type="redirect">/finance/viewFinance.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/finance/browseFinance.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/finance/editFinance.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/finance/editFinance.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>	
+
+		<action name="litigation" class="litigation">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/finance/showLitigation.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/finance/listLitigation.ftl</result>
+		    <result name="view" type="redirect">/finance/viewLitigation.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/finance/browseLitigation.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/finance/editLitigation.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/finance/editLitigation.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>	
+	</package>
+	
+	<package name="qualification" namespace="/qualification" extends="default">
+
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/qualification/{1}.jsp</result>
+		</action>		
+		
+		<action name="qualificationPaging" class="qualificationPaging"/>
+		<action name="integrityinfoPaging" class="integrityinfoPaging"/>
+		
+		<action name="qualification" class="qualification">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/qualification/showQualification.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/qualification/listQualification.ftl</result>
+		    <result name="view" type="redirect">/qualification/viewQualification.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/qualification/browseQualification.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/qualification/editQualification.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/qualification/editQualification.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="integrity" class="integrityinfo">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/qualification/showIntegrityinfo.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/qualification/listIntegrityinfo.ftl</result>
+		    <result name="view" type="redirect">/qualification/viewIntegrityinfo.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/qualification/browseIntegrityinfo.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/qualification/editIntegrityinfo.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/qualification/editIntegrityinfo.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+	
+	</package>
+	
+	<package name="expert" namespace="/expert" extends="default">
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/expert/{1}.jsp</result>
+		</action>		
+		
+		<action name="expertPaging" class="expertPaging"/>
+		<action name="expertprojectPaging" class="expertprojectPaging"/>
+
+		<action name="expert" class="expert">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/expert/showExpert.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/expert/listExpert.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/expert/queryListExpert.ftl</result>
+		    <result name="view" type="redirect">/expert/viewExpert.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/expert/browse.action</result>  
+		    <result name="edit">/WEB-INF/jsp/expert/editExpert.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/expert/editExpert.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>	
+
+		<action name="expertproject" class="expertproject">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/expert/showExpertProject.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/expert/listExpertProject.ftl</result>
+		    <result name="view" type="redirect">/expert/viewExpertProject.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/expert/browseExpertProject.action</result>  
+		    <result name="edit">/WEB-INF/jsp/expert/editExpertProject.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/expert/editExpertProject.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>	
+	</package>
+	
+	<package name="product" namespace="/product" extends="default">
+
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/product/{1}.jsp</result>
+		</action>		
+		
+		<action name="productPaging" class="productPaging"/>
+		<action name="projectPaging" class="projectPaging"/>
+		<action name="projectStandPaging" class="projectStandPaging"/>
+		<action name="highQualityProjectPaging" class="highQualityProjectPaging"/>
+		
+		<action name="product" class="product">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/product/showProduct.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/product/listProduct.ftl</result>
+		    <result name="view" type="redirect">/product/viewProduct.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/product/browseProduct.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/product/editProduct.jsp</result>
+		    <result name="input">/WEB-INF/jsp/product/editProduct.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="project" class="project">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/product/showProject.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/product/listProject.ftl</result>
+		    <result name="view" type="redirect">/product/viewProject.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/product/browseProject.action?requestId=${enterpriseid}</result>  
+		    <result name="edit">/WEB-INF/jsp/product/editProject.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/product/editProject.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+
+		<action name="projectStand" class="projectStand">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/product/showProjectStand.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/product/listProjectStand.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/product/queryListProjectStand.ftl</result>
+		    <result name="view" type="redirect">/product/viewProjectStand.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/product/browseProjectStand.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		
+		</action>	
+		
+		<action name="highQualityProject" class="highQualityProject">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/product/showHighQualityProject.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/product/listHighQualityProject.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/product/queryListHighQualityProject.ftl</result>
+		    <result name="view" type="redirect">/product/viewHighQualityProject.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/product/browseHighQualityProject.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		
+		</action>	
+	</package>	
+
+
+	<package name="train" namespace="/train" extends="default">
+	
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/train/{1}.jsp</result>
+		</action>
+		
+		<action name="trainPaging" class="trainPaging"/>
+		<action name="examPaging" class="examPaging"/>
+		<action name="candidatePaging" class="candidatePaging"/>
+		<action name="candidatetrainsPaging" class="candidatetrainsPaging"/>
+		<action name="examenrollsPaging" class="examenrollsPaging"/>
+		<action name="installEmployeePaging" class="installEmployeePaging"/>
+		
+		<action name="train" class="train">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showTrain.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listTrain.ftl</result>
+		    <result name="selectList" type="freemarker">/WEB-INF/ftl/train/selectListTrain.ftl</result>  
+		    <result name="view" type="redirect">/train/viewTrain.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseTrain.action</result>  
+		    <result name="edit">/WEB-INF/jsp/train/editTrain.jsp</result>
+		    <result name="input">/WEB-INF/jsp/train/editTrain.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
+		
+		<action name="exam" class="exam">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showExamination.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listExamination.ftl</result>
+		    <result name="selectList" type="freemarker">/WEB-INF/ftl/train/selectExamination.ftl</result>  
+		    <result name="view" type="redirect">/train/viewExamination.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseExamination.action</result>  
+		    <result name="edit">/WEB-INF/jsp/train/editExamination.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/train/editExamination.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+		
+		<action name="candidate" class="candidate">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showCandidates.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listCandidates.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/train/listCandidates.ftl</result>
+		    <result name="view" type="redirect">/train/viewCandidates.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseCandidates.action</result>  
+		    <result name="edit">/WEB-INF/jsp/train/editCandidates.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/train/editCandidates.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+		
+		<action name="candidatetrains" class="candidatetrains">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showCandidateTrains.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listCandidateTrains.ftl</result>
+		    <result name="statisticAll" type="freemarker">/WEB-INF/ftl/train/statisticAllCandidateTrains.ftl</result>
+		    <result name="view" type="redirect">/train/viewCandidateTrains.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseCandidateTrains.action?requestId=${candidateid}</result>  
+		    <result name="edit">/WEB-INF/jsp/train/editCandidateTrains.jsp</result>
+		    <result name="input">/WEB-INF/jsp/train/editCandidateTrains.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>  
+		</action>
+		<action name="examenrolls" class="examenrolls">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showExamEnrolls.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listExamEnrolls.ftl</result>
+		    <result name="statisticAll" type="freemarker">/WEB-INF/ftl/train/statisticAllExamEnrolls.ftl</result>
+		    <result name="view" type="redirect">/train/viewExamEnrolls.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseExamEnrolls.action?requestId=${candidateid}</result>  
+		    <result name="edit">/WEB-INF/jsp/train/editExamEnrolls.jsp</result>  
+		    <result name="input">/WEB-INF/jsp/train/editExamEnrolls.jsp</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
+		<action name="installEmployee" class="installEmployee"> 
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/train/showInstallEmployee.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/train/listInstallEmployee.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/train/queryListInstallEmployee.ftl</result>
+		    <result name="view" type="redirect">/train/viewInstallEmployee.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/train/browseInstallEmployee.action</result> 
+		    <result name="edit">/WEB-INF/jsp/train/editInstallEmployee.jsp</result> 
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		    
+		</action>		    
+		    
+	</package>	
+
+	<package name="correspondent" namespace="/correspondent" extends="default">
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/correspondent/{1}.jsp</result>
+		</action>
+		
+		<action name="correspondentPaging" class="correspondentPaging"/>
+		<action name="excellentselectPaging" class="excellentselectPaging"/>
+		
+		<action name="correspondent" class="correspondent">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/correspondent/showCorrespondent.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/correspondent/listCorrespondent.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/correspondent/queryListCorrespondent.ftl</result>
+		    <result name="exportList" type="freemarker">/WEB-INF/ftl/correspondent/exportListCorrespondent.ftl</result>
+		    <result name="view" type="redirect">/correspondent/viewCorrespondent.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/correspondent/browseCorrespondent.action</result>  
+		    <result name="edit">/WEB-INF/jsp/correspondent/editCorrespondent.jsp</result>
+		    <result name="input">/WEB-INF/jsp/correspondent/editCorrespondent.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
+		
+		<action name="excellentselect" class="excellentselect">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/correspondent/showExcellentSelect.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/correspondent/listExcellentSelect.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/correspondent/queryListExcellentSelect.ftl</result>
+		    <result name="view" type="redirect">/correspondent/viewExcellentSelect.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/correspondent/browseExcellentSelect.action</result>  
+		    <result name="edit">/WEB-INF/jsp/correspondent/editExcellentSelect.jsp</result>
+		    <result name="input">/WEB-INF/jsp/correspondent/editExcellentSelect.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>		
+	</package>
+	
+	<package name="self" namespace="/self" extends="default">
+		<action name="*" class="com.meidusa.demo.web.support.DispatcherAction">
+			<result name="success">/WEB-INF/jsp/self/{1}.jsp</result>
+		</action>	    
+	    
+		<action name="selfEnterprisePaging" class="selfEnterprisePaging"/>
+		<action name="selfCompleteProjectPaging" class="selfCompleteProjectPaging"></action>
+		<action name="selfCostEngineerPaging" class="selfCostEngineerPaging"></action>
+		<action name="selfTechPersonPaging" class="selfTechPersonPaging"></action>
+		<action name="vEnterpriseAllInfoPaging" class="vEnterpriseAllInfoPaging"></action>
+		
+		<action name="selfEnterprise" class="selfEnterprise">  
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/self/showEnterprise.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/self/listEnterprise.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/self/queryListEnterprise.ftl</result>
+		    <result name="exportList" type="freemarker">/WEB-INF/ftl/self/exportListEnterprise.ftl</result>
+		    <result name="view" type="redirect">/self/viewEnterprise.action?requestId=${requestId}</result>  
+		    <result name="viewProj" type="freemarker">/WEB-INF/ftl/self/listCompleteProject.ftl</result>
+		    <result name="viewCost" type="freemarker">/WEB-INF/ftl/self/listCostEngineer.ftl</result>
+		    <result name="viewTech" type="freemarker">/WEB-INF/ftl/self/listTechPerson.ftl</result>
+		    <result name="browse" type="redirect">/self/browseEnterprise.action</result>  
+		    <result name="edit">/WEB-INF/jsp/self/editEnterprise.jsp</result>
+		    <result name="input">/WEB-INF/jsp/self/editEnterprise.jsp</result>
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>
+		    
+		</action>
+		
+		<action name="selfCompleteProject" class="selfCompleteProject">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/self/showCompleteProject.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/self/listCompleteProject.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/self/queryListCompleteProject.ftl</result>
+		    <result name="view" type="redirect">/self/viewCompleteProject.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/self/browseCompleteProject.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		    
+		</action>
+		
+		<action name="selfTechPerson" class="selfTechPerson">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/self/showTechPerson.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/self/listTechPerson.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/self/queryListTechPerson.ftl</result>
+		    <result name="view" type="redirect">/self/viewTechPerson.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/self/browseTechPerson.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		    
+		</action>
+		
+		<action name="selfCostEngineer" class="selfCostEngineer">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/self/showCostEngineer.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/self/listCostEngineer.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/self/queryListCostEngineer.ftl</result>
+		    <result name="view" type="redirect">/self/viewCostEngineer.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/self/browseCostEngineer.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		    
+		</action>
+		
+		<action name="vEnterpriseAllInfo" class="vEnterpriseAllInfo">
+		    <interceptor-ref name="paramsPrepareParamsStack" />  
+		    <result name="show" type="freemarker">/WEB-INF/ftl/self/showVEnterpriseAllInfo.ftl</result>  
+		    <result name="list" type="freemarker">/WEB-INF/ftl/self/listVEnterpriseAllInfo.ftl</result>
+		    <result name="queryList" type="freemarker">/WEB-INF/ftl/self/queryListVEnterpriseAllInfo.ftl</result>
+		    <result name="exportList" type="freemarker">/WEB-INF/ftl/self/exportListVEnterpriseAllInfo.ftl</result>
+		    <result name="view" type="redirect">/self/viewVEnterpriseAllInfo.action?requestId=${requestId}</result>  
+		    <result name="browse" type="redirect">/self/browseVEnterpriseAllInfo.action</result>  
+		    <result name="error">/WEB-INF/jsp/error.jsp</result>		    
+		</action>
+	</package>	
+	
+</struts>

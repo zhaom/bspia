@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+	<bean id="checkCodeSession" class="com.meidusa.toolkit.web.common.components.CheckCodeSession" scope="session" />
+    
+    <!-- demo -->
+    <bean id="post" class="com.meidusa.demo.web.action.PostAction" scope="prototype">
+    	<property name="ao" ref="postAO"/>
+    </bean>
+    <bean id="postPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="postAO"/>
+    </bean>
+    <!-- login -->
+    <bean id="login" class="com.meidusa.demo.web.action.LoginAction" scope="prototype">
+    	<property name="ao" ref="userAO"/>
+    	<property name="pao" ref="userPermissionAO"/>
+    </bean>
+    <bean id="logout" class="com.meidusa.demo.web.action.LogoutAction" scope="prototype">
+    </bean>
+    <!-- system -->     
+    <bean id="userPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="userAO"/>
+    </bean>
+     <bean id="user" class="com.meidusa.demo.web.action.UserAction" scope="prototype">
+    	<property name="ao" ref="userAO"/>
+    </bean> 
+     <bean id="user2" class="com.meidusa.demo.web.action.User2Action" scope="prototype">
+    	<property name="ao" ref="userAO"/>
+    </bean> 
+    
+    <bean id="userPermission" class="com.meidusa.demo.web.action.UserPermissionAction" scope="prototype">
+    	<property name="ao" ref="userPermissionAO"/>
+    </bean>
+    <bean id="enumeration" class="com.meidusa.demo.web.action.EnumerationAction" scope="prototype">
+    	<property name="ao" ref="enumerationAO"/>
+    </bean>    
+    <bean id="enumerationPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="enumerationAO"/>
+    </bean>    
+    
+    
+     
+    <bean id="enterprisePaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="enterpriseAO"/>
+    </bean>
+    <bean id="enterprise" class="com.meidusa.demo.web.action.EnterpriseAction" scope="prototype">
+    	<property name="ao" ref="enterpriseAO"/>
+    </bean> 
+
+    <bean id="businessPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="businessAO"/>
+    </bean>
+    <bean id="financePaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="financeAO"/>
+    </bean>	
+    <bean id="litigationPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="litigationAO"/>
+    </bean>	
+    <bean id="qualificationPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="qualificationAO"/>
+    </bean>	    
+    <bean id="integrityinfoPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="integrityinfoAO"/>
+    </bean>	    
+    <bean id="business" class="com.meidusa.demo.web.action.BusinessAction" scope="prototype">
+    	<property name="ao" ref="businessAO"/>
+    </bean>
+    <bean id="finance" class="com.meidusa.demo.web.action.FinanceAction" scope="prototype">
+    	<property name="ao" ref="financeAO"/>
+    </bean>     
+    <bean id="litigation" class="com.meidusa.demo.web.action.LitigationAction" scope="prototype">
+    	<property name="ao" ref="litigationAO"/>
+    </bean> 
+    <bean id="qualification" class="com.meidusa.demo.web.action.QualificationAction" scope="prototype">
+    	<property name="ao" ref="qualificationAO"/>
+    </bean>     
+    <bean id="integrityinfo" class="com.meidusa.demo.web.action.IntegrityinfoAction" scope="prototype">
+    	<property name="ao" ref="integrityinfoAO"/>
+    </bean> 
+        
+        
+
+    <bean id="notification" class="com.meidusa.demo.web.action.NotificationAction" scope="prototype">
+    	<property name="ao" ref="notificationAO"/>
+    </bean>
+    
+    <bean id="notificationPaging" class="com.meidusa.demo.web.support.NotificationPagingAction" scope="prototype">
+    	<property name="ao" ref="notificationAO"/>
+    </bean>
+
+    <bean id="expert" class="com.meidusa.demo.web.action.ExpertAction" scope="prototype">
+    	<property name="ao" ref="expertAO"/>
+    </bean>
+    <bean id="expertPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="expertAO"/>
+    </bean>
+
+    <bean id="expertproject" class="com.meidusa.demo.web.action.ExpertProjectAction" scope="prototype">
+    	<property name="ao" ref="expertprojectAO"/>
+    </bean>
+    <bean id="expertprojectPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="expertprojectAO"/>
+    </bean>
+
+    
+    <bean id="trainPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="trainAO"/>
+    </bean>
+    <bean id="train" class="com.meidusa.demo.web.action.TrainingAction" scope="prototype">
+    	<property name="ao" ref="trainAO"/>
+    </bean>
+
+    <bean id="examPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="examAO"/>
+    </bean>
+    <bean id="exam" class="com.meidusa.demo.web.action.ExamAction" scope="prototype">
+    	<property name="ao" ref="examAO"/>
+    </bean>
+    <bean id="candidatePaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="candidateAO"/>
+    </bean>
+    <bean id="candidate" class="com.meidusa.demo.web.action.CandidateAction" scope="prototype">
+    	<property name="ao" ref="candidateAO"/>
+    </bean>
+    <bean id="candidatetrainsPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="candidatetrainsAO"/>
+    </bean>    
+    <bean id="candidatetrains" class="com.meidusa.demo.web.action.CandidateTrainsAction" scope="prototype">
+    	<property name="ao" ref="candidatetrainsAO"/>
+    </bean>    
+    <bean id="examenrollsPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="examenrollsAO"/>
+    </bean>    
+    <bean id="examenrolls" class="com.meidusa.demo.web.action.ExamEnrollsAction" scope="prototype">
+    	<property name="ao" ref="examenrollsAO"/>
+    </bean>    
+    
+    
+    
+    
+    <bean id="productPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="productAO"/>
+    </bean>
+    <bean id="product" class="com.meidusa.demo.web.action.ProductAction" scope="prototype">
+    	<property name="ao" ref="productAO"/>
+    </bean>
+
+
+    <bean id="projectPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="projectAO"/>
+    </bean>
+    <bean id="project" class="com.meidusa.demo.web.action.ProjectAction" scope="prototype">
+    	<property name="ao" ref="projectAO"/>
+    </bean>
+
+
+    <bean id="correspondentPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="correspondentAO"/>
+    </bean>
+    <bean id="correspondent" class="com.meidusa.demo.web.action.CorrespondentAction" scope="prototype">
+    	<property name="ao" ref="correspondentAO"/>
+    </bean>
+    <bean id="excellentselectPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="excellentselectAO"/>
+    </bean>
+    <bean id="excellentselect" class="com.meidusa.demo.web.action.ExcellentSelectAction" scope="prototype">
+    	<property name="ao" ref="excellentselectAO"/>
+    </bean> 
+    
+    
+    <bean id="selfEnterprisePaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+    	<property name="ao" ref="selfEnterpriseAO"/>
+    </bean>
+    <bean id="selfEnterprise" class="com.meidusa.demo.web.action.SelfEnterpriseAction" scope="prototype">
+    	<property name="ao" ref="selfEnterpriseAO"/>
+    	<property name="selfCompleteProjectAO" ref="selfCompleteProjectAO"/>
+    	<property name="selfCostEngineerAO" ref="selfCostEngineerAO"/>
+    	<property name="selfTechPersonAO" ref="selfTechPersonAO"/>
+    </bean> 
+    
+    <bean id="selfCompleteProjectPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="selfCompleteProjectAO"></property>
+    </bean>
+    <bean id="selfCompleteProject" class="com.meidusa.demo.web.action.SelfCompleteProjectAction" scope="prototype">
+        <property name="ao" ref="selfCompleteProjectAO"></property>
+    </bean>
+    
+    <bean id="selfTechPersonPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="selfTechPersonAO"></property>
+    </bean>
+    <bean id="selfTechPerson" class="com.meidusa.demo.web.action.SelfTechPersonAction" scope="prototype">
+        <property name="ao" ref="selfTechPersonAO"></property>
+    </bean>
+    
+    <bean id="selfCostEngineerPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="selfCostEngineerAO"></property>
+    </bean>
+    <bean id="selfCostEngineer" class="com.meidusa.demo.web.action.SelfCostEngineerAction" scope="prototype">
+        <property name="ao" ref="selfCostEngineerAO"></property>
+    </bean>
+    
+    <bean id="vEnterpriseAllInfoPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="vEnterpriseAllInfoAO"></property>
+    </bean>
+    <bean id="vEnterpriseAllInfo" class="com.meidusa.demo.web.action.VEnterpriseAllInfoAction" scope="prototype">
+        <property name="ao" ref="vEnterpriseAllInfoAO"></property>
+    </bean>
+
+    <bean id="projectStandPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="projectStandAO"></property>
+    </bean>
+    <bean id="projectStand" class="com.meidusa.demo.web.action.ProjectStandAction" scope="prototype">
+        <property name="ao" ref="projectStandAO"></property>
+    </bean>
+    
+    <bean id="installEmployeePaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="installEmployeeAO"></property>
+    </bean>
+    <bean id="installEmployee" class="com.meidusa.demo.web.action.InstallEmployeeAction" scope="prototype">
+        <property name="ao" ref="installEmployeeAO"></property>
+    </bean>
+    
+    <bean id="highQualityProjectPaging" class="com.meidusa.demo.web.support.PagingAction" scope="prototype">
+        <property name="ao" ref="highQualityProjectAO"></property>
+    </bean>
+    <bean id="highQualityProject" class="com.meidusa.demo.web.action.HighQualityProjectAction" scope="prototype">
+        <property name="ao" ref="highQualityProjectAO"></property>
+    </bean>
+</beans>

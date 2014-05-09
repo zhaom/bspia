@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC 
+       "-//SPRING//DTD BEAN//EN"
+       "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="postAO" class="com.meidusa.demo.biz.PostAO" singleton="true" >
+    	<property name="dao" ref="postDAO" />
+    </bean>
+    
+    <bean id="userAO" class="com.meidusa.demo.biz.UserAO" singleton="true" >
+    	<property name="dao" ref="userDAO" />
+    </bean>
+    <bean id="userPermissionAO" class="com.meidusa.demo.biz.UserPermissionAO" singleton="true" >
+    	<property name="dao" ref="userPermissionDAO" />
+    </bean>
+    <bean id="enumerationAO" class="com.meidusa.demo.biz.EnumerationAO" singleton="true" >
+    	<property name="dao" ref="enumerationDAO" />
+    </bean>
+    
+    <bean id="businessAO" class="com.meidusa.demo.biz.BusinessAO" singleton="true" >
+    	<property name="dao" ref="businessDAO" />
+    </bean>
+    <bean id="financeAO" class="com.meidusa.demo.biz.FinanceAO" singleton="true" >
+    	<property name="dao" ref="financeDAO" />
+    </bean>
+    <bean id="litigationAO" class="com.meidusa.demo.biz.LitigationAO" singleton="true" >
+    	<property name="dao" ref="litigationDAO" />
+    </bean>
+    <bean id="qualificationAO" class="com.meidusa.demo.biz.QualificationAO" singleton="true" >
+    	<property name="dao" ref="qualificationDAO" />
+    </bean>
+    <bean id="integrityinfoAO" class="com.meidusa.demo.biz.IntegrityinfoAO" singleton="true" >
+    	<property name="dao" ref="integrityinfoDAO" />
+    </bean>
+    <bean id="enterpriseAO" class="com.meidusa.demo.biz.EnterpriseAO" singleton="true" >
+    	<property name="dao" ref="enterpriseDAO" />
+    </bean>    
+    
+    
+    
+    <bean id="notificationAO" class="com.meidusa.demo.biz.NotificationAO" singleton="true" >
+    	<property name="dao" ref="notificationDAO" />
+    </bean>
+    <bean id="expertAO" class="com.meidusa.demo.biz.ExpertAO" singleton="true" >
+    	<property name="dao" ref="expertDAO" />
+    	<property name="enumerationDAO" ref="enumerationDAO" />
+    </bean>
+    <bean id="expertprojectAO" class="com.meidusa.demo.biz.ExpertProjectAO" singleton="true" >
+    	<property name="dao" ref="expertprojectDAO" />
+    	<property name="enumerationDAO" ref="enumerationDAO" />
+    </bean>
+    <bean id="correspondentAO" class="com.meidusa.demo.biz.CorrespondentAO" singleton="true" >
+    	<property name="dao" ref="correspondentDAO" />
+    </bean>    
+    <bean id="excellentselectAO" class="com.meidusa.demo.biz.ExcellentSelectAO" singleton="true" >
+    	<property name="dao" ref="excellentselectDAO" />
+    	<property name="enterpriseDAO" ref="enterpriseDAO" />
+    </bean>  
+        
+    <bean id="trainAO" class="com.meidusa.demo.biz.TrainingAO" singleton="true" >
+    	<property name="dao" ref="trainDAO" />
+    </bean>
+    <bean id="examAO" class="com.meidusa.demo.biz.ExamAO" singleton="true" >
+    	<property name="dao" ref="examDAO" />
+    </bean>
+    <bean id="candidateAO" class="com.meidusa.demo.biz.CandidateAO" singleton="true" >
+    	<property name="dao" ref="candidateDAO" />
+    </bean>
+    <bean id="candidatetrainsAO" class="com.meidusa.demo.biz.CandidateTrainsAO" singleton="true" >
+    	<property name="dao" ref="candidatetrainsDAO" />
+    	<property name="enumerationDAO" ref="enumerationDAO" />
+    	<property name="trainDAO" ref="trainDAO" />
+    	<property name="candidateDAO" ref="candidateDAO" />
+    </bean>
+    <bean id="examenrollsAO" class="com.meidusa.demo.biz.ExamEnrollsAO" singleton="true" >
+    	<property name="dao" ref="examenrollsDAO" />
+    	<property name="enumerationDAO" ref="enumerationDAO" />
+    	<property name="examDAO" ref="examDAO" />
+    	<property name="candidateDAO" ref="candidateDAO" />
+    </bean>
+
+    <bean id="productAO" class="com.meidusa.demo.biz.ProductAO" singleton="true" >
+    	<property name="dao" ref="productDAO" />
+    </bean>
+    <bean id="projectAO" class="com.meidusa.demo.biz.ProjectAO" singleton="true" >
+    	<property name="dao" ref="projectDAO" />
+    </bean>   
+    
+    <bean id="selfEnterpriseAO" class="com.meidusa.demo.biz.SelfEnterpriseAO" singleton="true" >
+    	<property name="dao" ref="selfEnterpriseDAO" />
+    </bean> 
+    <bean id="selfCompleteProjectAO" class="com.meidusa.demo.biz.SelfCompleteProjectAO" singleton="true">
+        <property name="dao" ref="selfCompleteProjectDAO"></property>
+    </bean>
+    <bean id="selfCostEngineerAO" class="com.meidusa.demo.biz.SelfCostEngineerAO" singleton="true">
+        <property name="dao" ref="selfCostEngineerDAO"></property>
+    </bean>
+    <bean id="selfTechPersonAO" class="com.meidusa.demo.biz.SelfTechPersonAO" singleton="true">
+        <property name="dao" ref="selfTechPersonDAO"></property>
+    </bean>        
+    <bean id="vEnterpriseAllInfoAO" class="com.meidusa.demo.biz.VEnterpriseAllInfoAO" singleton="true">
+        <property name="dao" ref="vEnterpriseAllInfoDAO"></property>
+    </bean> 
+    
+    <bean id="projectStandAO" class="com.meidusa.demo.biz.ProjectStandAO" singleton="true">
+        <property name="dao" ref="projectStandDAO"></property>
+    </bean>        
+    <bean id="installEmployeeAO" class="com.meidusa.demo.biz.InstallEmployeeAO" singleton="true">
+        <property name="dao" ref="installEmployeeDAO"></property>
+    </bean>    
+    
+    <bean id="highQualityProjectAO" class="com.meidusa.demo.biz.HighQualityProjectAO" singleton="true">
+        <property name="dao" ref="highQualityProjectDAO"></property>
+    </bean>    
+    
+</beans>

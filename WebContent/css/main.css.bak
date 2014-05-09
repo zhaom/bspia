@@ -1,0 +1,163 @@
+.submitButton{
+	background:url(../images/bg08092.gif)  repeat-x; width:56px; height:20px; line-height:18px;
+	padding:0;
+	margin:0;
+	padding: 1px 12px; line-height:18px;
+	border:1px solid #87A3C1;
+	color:#000099;
+}
+
+.buttonUl{ 
+	overflow:hidden;
+}
+.buttonUl ul{ 
+	repeat-x 0 -72px; 
+	height:18px; 
+}
+
+.buttonUl li{ 
+	float:left; 
+	width:auto !important; 
+	width:1%; 
+	white-space:nowrap; 
+	padding:0 3px; 
+	no-repeat bottom left;
+}
+
+.buttonUl li a{ 
+	display:block; 
+	text-decoration:none; 
+	padding-left:2px; 
+	cursor:pointer;
+}
+.buttonUl li a span { 
+	display:block;
+	height:24px; 
+	line-height:18px; 
+	color:white; 
+	padding-right:5px;
+}
+
+
+.eventMessage {
+color: #000099;
+}
+ 
+.errorMessage {
+color: #ff0000;
+}
+
+
+.tableBordered {
+border: 0.1em solid #999999;
+width: 100%;
+}
+
+
+/* ======================== */
+/* =====ShangHai Table Styles ===== */
+/* ======================== */
+.header-sh{
+	background-color: #E2F4FE;
+}
+
+.basic-table-sh {
+width: 100%; 
+border:1px solid #DBDCE3; margin:0 0px; font-size:12px;
+}
+
+.basic-table-sh tr td {
+/* Style for all cells */
+padding: 0 0 0 5px;
+text-align: left;
+line-height:21px; height:21px;
+}
+
+.basic-table-sh tr .label,
+.basic-table-sh tr .group-label {
+/* field labels for forms */
+font-size:12px;
+text-align: right;
+
+width: 1%;
+padding-left:8px;
+}
+
+.basic-table-sh tr .group-label {
+/* "header" for field label groups */
+font-size: 12px;
+}
+
+.basic-table-sh th,
+.basic-table-sh tr th,
+.basic-table-sh .header-row {
+/*background-image: url(/images/tabs/tab_header_bg.gif); */
+background: #599de9;
+text-align: center;
+padding: 0; 
+line-height:21px; height:21px;
+
+}
+
+.basic-table-sh .header-row td {
+border-bottom: 0.1em solid #000000;
+}
+
+.header-row-sh td a {
+color: #000000;
+}
+
+.basic-table-sh .viewManyTR1,
+.basic-table-sh .alternate-row {
+/* Alternating row style */
+/* .viewManyTR1 deprecated - use .alternate-row */
+background-color: #FFFFCC;
+}
+
+.basic-table-sh tr .button-col {
+/* button column style - for the small
+collection of buttons used in lists */
+vertical-align: top;
+}
+
+.basic-table-sh tr .button-col a {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+float: left;
+margin: 0 0.1em 0 0.1em;
+padding: 0.1em 0 0.1em 0.4em;
+
+}
+
+.basic-table-sh tr .smallSubmit,
+.basic-table-sh tr .smallSubmit:visited {
+background-color: #ffffff;
+border: #999999 solid 0.1em;
+color: #000099;
+
+
+}
+
+.basic-table-sh tr .button-col a:hover,
+.basic-table-sh tr .button-col a:active,
+.basic-table-sh tr .smallSubmit:hover,
+.basic-table-sh tr .smallSubmit:active {
+color: #ff0000;
+text-decoration: none;
+}
+.basic-table-sh tr a:hover{}
+.basic-table-sh tbody td {
+border-bottom:#F0F0F0 1px solid;
+}
+
+.basic-table-sh tfoot td
+{
+text-align:center;
+border-bottom:#b5d7ff 1px solid;
+line-height:12px;
+height:12px;
+background:#e6f1fd;
+}
+
+.bgonmouseover-sh{ background-color:#CCCCCC}

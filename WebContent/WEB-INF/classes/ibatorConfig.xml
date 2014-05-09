@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
+<ibatorConfiguration >
+  <classPathEntry location="D:\temp\mysql-connector-java-5.1.6.jar" />
+  <ibatorContext id="context1" targetRuntime="com.meidusa.toolkit.plugin.ibator.core.HierarchyIntrospectedTable">
+    <ibatorPlugin type="com.meidusa.toolkit.plugin.ibator.core.MysqlPagingPlugin"/>    
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/demo" userId="root" password="123456">
+       
+    </jdbcConnection>  
+    <javaModelGenerator targetPackage="com.meidusa.demo.dal.model" targetProject="bspia/src" >
+     <property name="exampleRootInnerClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample.Criteria"/>
+     <property name="rootClass" value="com.meidusa.toolkit.dal.ibator.AbstractModel"/>
+    </javaModelGenerator>	
+    <sqlMapGenerator targetPackage="com.meidusa.demo.dal.sqlmap" targetProject="bspia/src" />
+    <daoGenerator targetPackage="com.meidusa.demo.dal" targetProject="bspia/src" type="SPRING" >
+    </daoGenerator> 
+<!--  
+    <table schema="demo" tableName="correspondent" domainObjectName="Correspondent">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.CorrespondentExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Correspondent,CorrespondentExample&gt;"/>
+    </table>
+
+ 
+    <table schema="demo" tableName="expertproject" domainObjectName="ExpertProject">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ExpertProjectExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;ExpertProject,ExpertProjectExample&gt;"/>
+    </table>    
+
+    <table schema="demo" tableName="enterpriseinfo" domainObjectName="EnterpriseInfo">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.EnterpriseInfoExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;EnterpriseInfo,EnterpriseInfoExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="excellentSelection" domainObjectName="ExcellentSelection">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ExcellentSelectionExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;ExcellentSelection,ExcellentSelectionExample&gt;"/>
+    </table>
+
+    <table schema="demo" tableName="expert" domainObjectName="Expert">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ExpertExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Expert,ExpertExample&gt;"/>
+    </table>
+     
+    <table schema="demo" tableName="examination" domainObjectName="Examination">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ExaminationExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Examination,ExaminationExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="training" domainObjectName="Training">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.TrainingExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Training,TrainingExample&gt;"/>
+    </table>    
+
+    <table schema="demo" tableName="notification" domainObjectName="Notification">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.NotificationExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Notification,NotificationExample&gt;"/>
+    </table>
+  
+    <table schema="demo" tableName="post" domainObjectName="Post">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.PostExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Post,PostExample&gt;"/>
+    </table>
+
+    <table schema="demo" tableName="userpermission" domainObjectName="UserPermission">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.UserPermissionExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;UserPermission,UserPermissionExample&gt;"/>
+    </table>     
+     
+    <table schema="demo" tableName="business" domainObjectName="Business">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.BusinessExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Business,BusinessExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="candidatetrains" domainObjectName="CandidateTrains">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.CandidateTrainsExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;CandidateTrains,CandidateTrainsExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="candidates" domainObjectName="Candidates">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.CandidatesExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Candidates,CandidatesExample&gt;"/>
+    </table>
+ 
+    <table schema="demo" tableName="user" domainObjectName="User">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.UserExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;User,UserExample&gt;"/>
+    </table>
+
+    <table schema="demo" tableName="enumeration" domainObjectName="Enumeration">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.EnumerationExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Enumeration,EnumerationExample&gt;"/>
+    </table>
+
+    <table schema="demo" tableName="enterpriseproducts" domainObjectName="EnterpriseProducts">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.EnterpriseProductsExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;EnterpriseProducts,EnterpriseProductsExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="examenrolls" domainObjectName="ExamEnrolls">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ExamEnrollsExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;ExamEnrolls,ExamEnrollsExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="finance" domainObjectName="Finance">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.FinanceExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Finance,FinanceExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="integrityinfo" domainObjectName="IntegrityInfo">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.IntegrityInfoExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;IntegrityInfo,IntegrityInfoExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="litigation" domainObjectName="Litigation">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.LitigationExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Litigation,LitigationExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="project" domainObjectName="Project">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ProjectExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Project,ProjectExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="enterprisecredit" domainObjectName="EnterpriseCredit">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.EnterpriseCreditExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;EnterpriseCredit,EnterpriseCreditExample&gt;"/>
+    </table>    
+        
+    <table schema="demo" tableName="product" domainObjectName="Product">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ProductExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Product,ProductExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="qualification" domainObjectName="Qualification">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.QualificationExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Qualification,QualificationExample&gt;"/>
+    </table>
+    
+    <table schema="demo" tableName="correspondent" domainObjectName="Correspondent">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.CorrespondentExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;Correspondent,CorrespondentExample&gt;"/>
+    </table>
+
+     <table schema="demo" tableName="selfEnterprise" domainObjectName="SelfEnterprise">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.SelfEnterpriseExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;SelfEnterprise,SelfEnterpriseExample&gt;"/>
+    </table>
+    
+        <table schema="demo" tableName="vEnterpriseAllInfo" domainObjectName="VEnterpriseAllInfo">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.VEnterpriseAllInfoExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;VEnterpriseAllInfo,VEnterpriseAllInfoExample&gt;"/>
+    </table>  
+   
+    <table schema="demo" tableName="selfCompleteProject" domainObjectName="SelfCompleteProject">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.SelfCompleteProjectExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;SelfCompleteProject,SelfCompleteProjectExample&gt;"/>
+    </table> 
+
+    <table schema="demo" tableName="selftechperson" domainObjectName="SelfTechPerson">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.SelfTechPersonExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;SelfTechPerson,SelfTechPersonExample&gt;"/>
+    </table> 
+    <table schema="demo" tableName="selfcostengineer" domainObjectName="SelfCostEngineer">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.SelfCostEngineerExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;SelfCostEngineer,SelfCostEngineerExample&gt;"/>
+    </table> 
+    <table schema="demo" tableName="installemployee" domainObjectName="InstallEmployee">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.InstallEmployeeExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;InstallEmployee,InstallEmployeeExample&gt;"/>
+    </table>     
+        -->  
+    <table schema="demo" tableName="projectstand" domainObjectName="ProjectStand">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.ProjectStandExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;ProjectStand,ProjectStandExample&gt;"/>
+    </table> 
+    <table schema="demo" tableName="highqualityproject" domainObjectName="HighQualityProject">
+     <property name="exampleRootClass" value="com.meidusa.toolkit.dal.ibator.AbstractExample&lt;com.meidusa.demo.dal.model.HighQualityProjectExample.Criteria&gt;"/>
+     <property name="rootInterface" value="com.meidusa.toolkit.dal.ibator.AbstractDAO&lt;HighQualityProject,HighQualityProjectExample&gt;"/>
+    </table> 
+
+  </ibatorContext>
+</ibatorConfiguration>
